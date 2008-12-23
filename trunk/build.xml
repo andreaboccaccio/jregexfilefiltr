@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="javaregexilenamefilter" basedir="." default="clean-build">
+<project name="javaregexfilenamefilter" basedir="." default="clean-build">
 	<property name="author"	value="Andrea Boccaccio"/>
 	<property name="src.dir"     value="src"/>
     <property name="build.dir"   value="build"/>
