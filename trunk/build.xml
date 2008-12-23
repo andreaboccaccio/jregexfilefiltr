@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="javaregexilenamefilter" basedir="." default="clean-build">
+	<property name="author"	value="Andrea Boccaccio"/>
+	<property name="src.dir"     value="src"/>
+    <property name="build.dir"   value="build"/>
+    <property name="classes.dir" value="${build.dir}/classes"/>
+    <property name="jar.dir"     value="${build.dir}/jar"/>
+    <property name="library.dir" value="${basedir}/lib"/>
+	<property name="impl.ver"	value="0.0.1"/>
+    
+	<path id="libraries">
+		<fileset dir="${library.dir}">
+			<include name="*.jar"/>
+		</fileset>
+	</path>
+	
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+    </target>
+    
+    <target name="compile">
+        <mkdir dir="${classes.dir}"/>
+        <javac classpathref="libraries" srcdir="${src.dir}" destdir="${classes.dir}"/>
+    </target>
+    
+    <target name="copy-resources">
+		<copy todir="${classes.dir}">
+			<fileset dir="${src.dir}">
+				<exclude name="**/*.java"/>
+				<exclude name="**/*.dtd"/>
+			</fileset>
+		</copy>
+	</target>
+
+    <target name="jar" depends="compile,copy-resources">
+        <mkdir dir="${jar.dir}"/>
+        <jar destfile="${jar.dir}/${ant.project.name}-${impl.ver}.jar" basedir="${classes.dir}">
+            <manifest>
+                <attribute name="Built-By" value="${author}"/>
+            	<attribute name="Implementation-Title" value="${ant.project.name}"/>
+            	<attribute name="Implementation-Version" value="${impl.ver}"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="clean-build" depends="clean,jar"/>
+
+    <target name="test" depends="clean-build">
+    	<java classname="org.junit.runner.JUnitCore" fork="true" classpathref="libraries">
+    		<arg value="boccaccio.andrea.regexfilenamefiltertest.RegexFilenameFilterTest"/>
+    		<classpath>
+    			<pathelement location="${jar.dir}/${ant.project.name}-${impl.ver}.jar"/>
+    		</classpath>
+    	</java>
+    </target>
+    
+</project>
