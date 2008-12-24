@@ -1,0 +1,18 @@
+JavaRegexFilenameFilterHowTo.txt
+
+Hi everyone, JavaRegexFilenameFilter, former regexfilenamefilter, before I move
+to Sourceforge, is a very simple java library to build objects that implements
+the "FilenameFilter" java interface.
+
+It is very, very simple to use, you have to add the library jar in your
+java application classpath, then you have to call:
+"RegexFilenameFilterFactory.getInstance().buildRegexFilenameFilter(<place here
+your regex>)"
+this method call returns an object that implements the java interface
+"FilenameFilter" that you can pass as a parameter to File method "listFiles" to
+get a list of filenames that match the regex you pass as parameter to the
+buildRegexFilenameFilter above.
+If you want to see an exemple there is the unit test in "RegexFilenameFilterTest"
+class code.
+
+I hope this is usefull and you enjoy it.
