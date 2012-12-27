@@ -1,6 +1,6 @@
 /**
- * Copyright 2008 Andrea Boccaccio
- * e-mail:	andrea_boccaccio@yahoo.it
+ * Copyright 2008-2012 Andrea Boccaccio
+ * e-mail:	andrea@andreaboccaccio.com
  * phone:	+393388098951
  * 
  *
